@@ -9,16 +9,25 @@ public class DisplayImplementation implements Display{
 
     @Override
     public void switchDisplayMode() {
-
+        if (displayMode == DisplayMode.BINARY) {
+            this.displayMode = DisplayMode.OCTAL;
+        } else if (displayMode == DisplayMode.OCTAL) {
+            this.displayMode = DisplayMode.DECIMAL;
+        } else if (displayMode == DisplayMode.DECIMAL) {
+            this.displayMode = DisplayMode.HEXADECIMAL;
+        } else if (displayMode == DisplayMode.HEXADECIMAL) {
+            this.displayMode = DisplayMode.BINARY;
+        }
     }
 
     @Override
     public void switchDisplayMode(String mode) {
-
+        DisplayMode displayMode1 = DisplayMode.valueOf(mode);
+        this.displayMode = displayMode1;
     }
 
     @Override
     public String getCurrentDisplayMode() {
-        return null;
+        return this.displayMode.toString();
     }
 }
